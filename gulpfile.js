@@ -67,7 +67,9 @@ gulp.task('sass', function() {
 // Watches for changes on the source files
 gulp.task('watch', function() {
     gulp.watch('./src/scss/**/*.scss', ['sass']);
-    gulp.watch('./src/*.html', ['assets']);
+    // gulp.watch('./src/*.html', ['assets']);
+    // gulp.watch('./src/js/*.js', ['assets']);
+    gulp.watch('./src/**', ['assets']);
 });
 
 // Default task

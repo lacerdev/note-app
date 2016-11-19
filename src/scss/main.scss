@@ -145,6 +145,11 @@ body {
 			}
 
 			&__exclude {
+				float: right;
+				cursor: pointer;
+			}
+
+			&__controls__ok {
 				float:right;
 			}
 		}

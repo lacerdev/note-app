@@ -6,7 +6,6 @@ var NoteType = {
 var Note = function(note) {
 	// this.element = $("<div>").addClass("note");
 	// this.element.textarea = $("<textarea>").addClass("note-content").prop("placeholder", "Nova Nota - Conteúdo");
-
 	if(note) {
 		this.title = note.title;
 		this.description = note.description;
@@ -15,7 +14,7 @@ var Note = function(note) {
 		// this.element.textarea = $(this.element.textarea).prop("readonly", true).text(this.description);
 		// this.element.title = $("<div>").addClass("note-title").append($("<h5>").text(this.title));
 	} else {
-		// this.element = $(this.element).addClass("note__new");
+		// this.element = $(this.element).addClass("note-new");
 		this.title = "";
 		this.description = "";
 		this.type = NoteType.NORMAL;
@@ -40,21 +39,35 @@ var Note = function(note) {
 }
 
 var MyApp = function() {
+	var app = this;
+	
 	this.name = "Notas"
 	this.notes = [];
+	this.noteCounter = 0;
+
+	var promiseNewNoteTemplate = $.ajax(
+		{	url: '/html/templates/note-new-template.html',
+			    data: '',         // Request data
+			    type: 'GET',      // POST, PUT, DELETE...
+			    dataType: 'text',
+			    async: true
+		});
+	$.when(promiseNewNoteTemplate).done(function(source) {
+		app.newNoteTemplate = source;
+	});
+
 }
 
 MyApp.prototype.addNote = function(note) {
 	$(".note").removeClass("note__new");
+	note.id = "note" + (++this.noteCounter);
 	this.notes.push(note);
-	$(".notes-container").prepend(note.element);
-
+	$(".notes-container").prepend(note);
 }
 
-$(document).ready(function() {
-	var app = new MyApp();
+MyApp.prototype.loadNotes = function() {
+	var app = this;
 	$.spinning.init();
-	
 	var promiseSleep = $.Deferred();
 	$.spinning.show();
 
@@ -75,30 +88,35 @@ $(document).ready(function() {
 	});
 
 
-	$(".nova-nota").click(function() {
-		var newNote = new Note();
-		app.addNote(newNote);
-		newNote.element.textarea.focus();
-	});
-
 	setTimeout(function() {
 		promiseSleep.resolve();
 	}, 500);
 
-	$.when(promiseSleep, promiseNotasDados, promiseNotaTemplate).done(function(promiseValue, notas, source) {
+	$.when(promiseSleep, promiseNotasDados, promiseNotaTemplate).done(function(promiseValue, notes, source) {
 		$.spinning.hide();
 		var template = Handlebars.compile(source[0]);
-		notas[0].forEach(function(nota) {
-				app.addNote(new Note(nota));
-				$(".notes-container").prepend(template(nota));
-		});
-		$(".note__exclude").each(function() {
-			$(this).modal("você tem certeza que deseja excluir este item", excluir);
+		notes[0].forEach(function(note) {
+				var noteObj = new Note(note);
+				app.addNote(noteObj);
+				$(".notes-container").prepend(template(noteObj));
 		});
 	});
+}
 
+
+$(document).ready(function() {
+	var app = new MyApp();
+	
+	$(".nav__nova-nota").click(function() {
+		$(".note").hide();
+		var template = Handlebars.compile(app.newNoteTemplate);
+		var newNote = new Note();
+		app.addNote(newNote);
+		$(".notes-container").prepend(template(newNote));
+		$(".note-new").find(".note__content").focus();
+	});
+
+	app.loadNotes();
+	
 });
 
-function excluir() {
-	$(this).closest(".note").remove();
-}

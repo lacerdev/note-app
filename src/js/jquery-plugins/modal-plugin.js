@@ -1,7 +1,6 @@
 (function($) {
-	var elemClicked;
 	var modal;
-	var abreModal = function(msg, callback) {
+	var abreModal = function(msg, callback, thisElement) {
 		if(!modal) {
 			modal =  $("<div>").addClass("myModal-layer")
 				.append($("<div>")
@@ -9,7 +8,7 @@
 					.append($("<p>").html(msg))
 					.append($("<button>").text("Sim").click(function() {
 						$(this).closest(".myModal-layer").fadeOut();
-						callback.call(elemClicked);
+						callback.call($(thisElement));
 					}))
 					.append($("<button>").text("Não").click(function() {
 						$(this).closest(".myModal-layer").fadeOut();
@@ -27,9 +26,8 @@
 	}
 
 	$.fn.modal = function(msg, callback) {
-		elemClicked = this;
 		this.click(function() {
-			abreModal(msg, callback);
+			abreModal(msg, callback, this);
 		});
 		return this;
 	}	
