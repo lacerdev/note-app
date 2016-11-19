@@ -1,0 +1,50 @@
+[
+	{
+		"title" : "nota 1",
+		"description": "Esta é a nota 1.",
+		"type": "NoteType.NORMAL",
+		"alarm": ""
+	},
+	{
+		"title" : "nota 2",
+		"description": "Lorem Ipsum dolor. bla blab lab la",
+		"type": "NoteType.NORMAL",
+		"alarm": ""
+	},
+	{
+		"title" : "nota 3",
+		"description": "Esta é a nota 3.",
+		"type": "NoteType.NORMAL",
+		"alarm": ""
+	},
+	{
+		"title" : "nota 4",
+		"description": "Lorem Ipsum dolor. bla blab lab la",
+		"type": "NoteType.NORMAL",
+		"alarm": ""
+	},
+	{
+		"title" : "nota 5",
+		"description": "Esta é a nota 5.",
+		"type": "NoteType.NORMAL",
+		"alarm": ""
+	},
+	{
+		"title" : "nota 6",
+		"description": "Lorem Ipsum dolor. bla blab lab lac asd asd asdassssss assda . ASda sdasdasd asd asd asd asd asd",
+		"type": "NoteType.NORMAL",
+		"alarm": ""
+	},
+	{
+		"title" : "nota 1",
+		"description": "Esta é a nota 7.",
+		"type": "NoteType.NORMAL",
+		"alarm": ""
+	},
+	{
+		"title" : "nota 8",
+		"description": "Lorem Ipsum dolor. bla blab lab la",
+		"type": "NoteType.NORMAL",
+		"alarm": ""
+	}
+]

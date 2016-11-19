@@ -1,0 +1,162 @@
+@import "font-awesome";
+@import "bootstrap";
+
+@mixin flex-off {
+	flex: 0 0 auto;
+}
+
+@mixin flex-on {
+	flex: 1 1 auto;
+}
+
+$default_spacing: 5px;
+$width_media_toggle: 50px;
+$shadow-offset-x: 2px;
+$shadow-offset-y: 2px;
+$shadow-blur-radius: 2px;
+$shadow-spread-radius: 1px;
+$shadow-color: rgba(0, 0, 0, 0.2);
+$note-margin: 10px;
+$note-padding-top: 5px;
+$note-padding-right: 10px;
+$note-padding-bottom: 10px;
+$note-padding-left: 5px;
+$note-min-height: 150px;
+$note-min-width: 200px;
+$note-max-width-discount: $note-margin + $note-margin + $shadow-offset-x + $shadow-blur-radius + $shadow-spread-radius;
+
+@mixin note-min-height-width {
+	min-height: $note-min-height;
+	min-width: $note-min-width;
+}
+
+@mixin textarea-nota {
+	@include note-min-height-width;
+	max-width: 100%;
+	max-height: 300px;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: none;
+}
+
+body {
+	box-sizing: border-box;
+	margin:0px;
+}
+
+.nav {
+	background-color: #3344AA;
+	display: flex;
+	padding: $default_spacing;
+	border-bottom: 1px solid black;
+		
+	&__menu {
+		@include flex-off;
+		width: 100px;
+		background-color: #eee;
+	} 
+
+	&__nova-nota {
+		@include flex-off;
+	}
+	&__search {
+		@include flex-on;
+		flex-shrink: justify;
+		background-color: pink;
+		margin: 0 $default_spacing;
+	}
+}
+
+.media {
+	height: 100px;
+	background-color: #888;
+	display: flex;
+	border-bottom: 1px solid black;
+
+	&__toggle {
+		@include flex-off;
+		width: $width_media_toggle;
+		height: 100%;
+		background-color: #eea;
+	}
+
+	&__container {
+		@include flex-on;
+		width: calc(100% - $width_media_toggle);
+		background-color: #9999FF;
+		display: flex;
+		justify-content: space-around;
+	}
+
+	&__item {
+		align-self: center;
+		background-color: black;
+		width: 50px;
+		height: 50px;
+	}
+}
+.annotations {
+	height: 100%;
+
+	.notes-container {
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
+		max-width: 100%;
+		padding: $note-margin/2;
+		flex-wrap: wrap;
+
+		.note {
+			@include note-min-height-width;
+			@include flex-off;
+			// max-width: calc(100% - $note-sum_margin_padding);
+			max-width: calc(100% - #{$note-max-width-discount});
+			background-color: #FFFFAA;
+			padding: $note-padding-top $note-padding-right $note-padding-bottom $note-padding-left;
+			box-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur-radius $shadow-spread-radius $shadow-color;
+			margin: $note-margin/2;
+			flex-basis: auto;
+			
+			&__title {
+				font-family: "Verdana", sans-serif;
+				input {
+					font-family: inherit;
+					border: none;
+					border-bottom: 1px solid #333;
+					background-color: transparent;
+					margin-bottom: 20px;
+					width: 100%;
+				}
+
+				h5 {
+					font-family: inherit;
+					font-weight: normal;
+					text-transform: uppercase;
+					margin: 0 0 20px 0;
+					display: inline-block;
+				}
+
+			}
+
+			&__content {
+				@include textarea-nota;
+			}
+
+			&__exclude {
+				float:right;
+			}
+		}
+
+		.note-new {
+			height: 500px;
+			width: 100%;
+			.note__content {
+				@include textarea-nota;
+				resize: none;
+			}
+		}
+	}
+}
+

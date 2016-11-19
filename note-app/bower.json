@@ -1,0 +1,22 @@
+{
+  "name": "gulpbasic",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "André Lacerda da Silva <lasdeparq@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/lasdeparq/frontend_voffice",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jQuery": "^3.1.1",
+    "bootstrap-sass": "^3.3.7"
+  }
+}
