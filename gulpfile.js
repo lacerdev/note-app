@@ -15,18 +15,37 @@ gulp.task('connect', function() {
 gulp.task('assets',function() {
     gulp.src('src/images/**')
       .pipe( gulp.dest('./dist/images') );
+
     gulp.src('src/*.html')
       .pipe(gulp.dest('./dist/'));
-    gulp.src('bower_components/jQuery/dist/jquery.min.js')
+
+    gulp.src('src/*.json')
+      .pipe(gulp.dest('./dist/'));
+
+    gulp.src('src/html/**')
+      .pipe(gulp.dest('./dist/html/'));
+
+    gulp.src('src/js/**')
+      .pipe(gulp.dest('./dist/js/'));
+
+    gulp.src('bower_components/jquery/dist/jquery.min.js')
       .pipe( gulp.dest('./dist/js/jquery/'));
+
     gulp.src('bower_components/font-awesome/fonts/**')
       .pipe( gulp.dest('./dist/fonts/')); 
+
     gulp.src('bower_components/bootstrap-sass/assets/fonts/bootstrap/**')
       .pipe( gulp.dest('./dist/fonts/'));    
+
     gulp.src('bower_components/bootstrap-sass/assets/images/**')
       .pipe( gulp.dest('./dist/images/'));
+
     gulp.src('bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js')
       .pipe( gulp.dest('./dist/js/bootstrap/')); 
+
+    gulp.src('bower_components/handlebars/handlebars.min.js')
+      .pipe( gulp.dest('./dist/js/handlebars/'));
+
     gulp.src('./dist').pipe(connect.reload());     
 });
 
