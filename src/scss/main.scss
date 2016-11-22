@@ -47,15 +47,21 @@ body {
 }
 
 .nav {
-	background-color: #3344AA;
+	background-color: #111;
 	display: flex;
 	padding: $default_spacing;
 	border-bottom: 1px solid black;
 		
 	&__menu {
 		@include flex-off;
-		width: 100px;
-		background-color: #eee;
+		a {
+			color: #818181;
+			text-decoration: none;
+		}
+
+		a:hover, a:focus{
+		    color: #f1f1f1;
+		}
 	} 
 
 	&__nova-nota {

@@ -3,26 +3,40 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
+
+	<script type="text/javascript" src="js/sidenavbar.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-plugins/spinning.css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-plugins/modal-plugin.css">
+	<link rel="stylesheet" type="text/css" href="css/sidenavbar.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-table.min.css">
 </head>
 <body>
-<nav class="nav">
-	<div class="nav__menu"></div>
-	<div class="nav__search"><input type="text" class="nav__search__field"></div>
-	<button class="nav__nova-nota">Nova</button>
-</nav>
-<header class="media">
-	<div class="media__toggle"></div>
-	<div class="media__container">
-		<div class="media__container__item"></div>
-	</div>
-</header>
-<section class="annotations">
-	<div class="notes-container">
-	</div>
-</section>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="javascript:void(0)" id="usersLink">Usuários</a>
+</div>
+
+<div id="main">
+	<nav class="nav">
+		<div class="nav__menu">
+			<a href="javascript:void(0)" onclick="openNav()"><i class="fa fa-bars fa-3x"></i></a>
+		</div>
+		<div class="nav__search"><input type="text" class="nav__search__field"></div>
+		<button class="nav__nova-nota">Nova</button>
+	</nav>
+	<header class="media">
+		<div class="media__toggle"></div>
+		<div class="media__container">
+			<div class="media__container__item"></div>
+		</div>
+	</header>
+	<section class="annotations">
+		<div class="notes-container">
+		</div>
+	</section>
+</div>
 
 <!-- JS -->
 <script src="js/handlebars/handlebars.min.js"></script>

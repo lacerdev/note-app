@@ -43,6 +43,11 @@ gulp.task('assets',function() {
     gulp.src('bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js')
       .pipe( gulp.dest('./dist/js/bootstrap/')); 
 
+    gulp.src('bower_components/bootstrap-table/dist/bootstrap-table.min.js')
+      .pipe( gulp.dest('./dist/js/bootstrap/'));
+      gulp.src('bower_components/bootstrap-table/dist/bootstrap-table.min.css')
+      .pipe( gulp.dest('./dist/css/bootstrap/')); 
+
     gulp.src('bower_components/handlebars/handlebars.min.js')
       .pipe( gulp.dest('./dist/js/handlebars/'));
 
